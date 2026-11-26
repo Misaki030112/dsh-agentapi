@@ -1,0 +1,16 @@
+{
+  "name": "@xgrowthlab/dsh-agentapi",
+  "version": "0.1.0",
+  "description": "在 DeepSeek Harness 中委派任务给七牛云端智能体，实时查看进展、续聊并下载产物。",
+  "repository": { "type": "git", "url": "https://github.com/Misaki030112/dsh-agentapi.git" },
+  "type": "module",
+  "main": "./index.js",
+  "exports": { ".": "./index.js", "./client": "./client.js", "./package.json": "./package.json" },
+  "files": ["index.js", "client.js", "lib", "cordis.patch.yml", "README.md", "assets/readme"],
+  "scripts": { "test": "node --test" },
+  "engines": { "node": ">=22.19" },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": { "platform": "web", "immediately": true, "inject": ["@deepseek-ai/dsh-client-ui-settings", "@deepseek-ai/dsh-client-ui-input-trigger", "@deepseek-ai/dsh-client-ui-primitives", "@deepseek-ai/dsh-client-ui-conversation"] }
+  }
+}

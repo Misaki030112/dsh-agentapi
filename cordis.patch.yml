@@ -1,0 +1,3 @@
+- insert:
+    - id: xgrowthlab-agentapi
+      name: '@xgrowthlab/dsh-agentapi'
