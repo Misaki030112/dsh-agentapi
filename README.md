@@ -10,12 +10,13 @@
 
 ## Install
 
-在 DeepSeek Harness 桌面版打开 **插件 → 添加插件**，选择以下任一来源，点击 **安装** 并重启 DSH。
+在 DeepSeek Harness 桌面版打开 **插件 → 添加插件**，粘贴以下安装包地址，点击 **安装**，完成后重启 DSH。
 
-| 安装来源 | 在「添加插件」中填写 |
-| --- | --- |
-| Release 安装包 | 下载 `dsh-agentapi-0.1.0.tgz`，粘贴本地文件的绝对路径。[下载 v0.1.0](https://github.com/Misaki030112/dsh-agentapi/releases/download/v0.1.0/dsh-agentapi-0.1.0.tgz) |
-| GitHub | 粘贴 `git+ssh://git@github.com/Misaki030112/dsh-agentapi.git#v0.1.0`，使用已授权的 GitHub SSH 账号安装 |
+```text
+https://github.com/Misaki030112/dsh-agentapi/releases/download/v0.1.0/dsh-agentapi-0.1.0.tgz
+```
+
+也可从 GitHub 安装，在同一输入框填写 `github:Misaki030112/dsh-agentapi#v0.1.0`。[查看发行版](https://github.com/Misaki030112/dsh-agentapi/releases/tag/v0.1.0)
 
 ## Quick Start
 
