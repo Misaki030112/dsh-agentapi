@@ -1,54 +1,40 @@
-<h1 align="center">Cloud Agent for DeepSeek Harness</h1>
+<h1 align="center">DSH × AgentAPI</h1>
 
-<p align="center">通过 <a href="https://www.qiniu.com/products/agentapi">七牛 AgentAPI</a> 为 DeepSeek Harness 接入云端智能体。<br>
-在 DSH 中分派云端任务，实时跟进执行，并在同一个子会话中持续协作。</p>
+<p align="center"><strong>七牛 AgentAPI 的 DeepSeek Harness 桌面插件</strong></p>
 
-## Features
-
-- **云端委派**　使用 `/cloud`，由 DSH 主智能体将会话中的目标、约束和选定的附件交给云端执行。代码任务也支持携带指定 Git commit 的快照。
-- **实时子会话**　云端智能体与本地子智能体出现在同一列表，以云朵图标区分。打开子会话即可查看实时发言和工具调用、中断执行或追加指令。
-- **任务交付**　执行结果回到主会话，报告、数据文件和代码补丁可从云端记录下载。后续任务可在同一云端会话中复用已有文件。
+七牛 AgentAPI 为开发者提供智能体托管服务。你可以为智能体配置模型、工具和执行环境，由平台运行多步骤任务。通过这个插件，DSH 可以直接调用你在 AgentAPI 上配置的智能体，让它们作为云端子智能体参与当前项目。[了解七牛 AgentAPI](https://www.qiniu.com/products/agentapi)
 
 ## Install
 
-**从 GitHub 安装。** 已有仓库访问权限的用户可用 GitHub SSH 安装指定版本。Web 版使用以下命令。
+在 DeepSeek Harness 桌面版打开 **插件 → 添加插件**，任选一种安装来源。
 
-```sh
-npx -y @deepseek-ai/dsh plugin --profile web add 'git+ssh://git@github.com/Misaki030112/dsh-agentapi.git#v0.1.0'
-```
+| 安装来源 | 在「添加插件」中填写 |
+| --- | --- |
+| Release 安装包 | 登录 GitHub [下载 v0.1.0 安装包](https://github.com/Misaki030112/dsh-agentapi/releases/download/v0.1.0/dsh-agentapi-0.1.0.tgz)，填入下载的 `.tgz` 文件的绝对路径 |
+| GitHub 仓库 | 已配置仓库 SSH 访问权限时，直接粘贴 `git+ssh://git@github.com/Misaki030112/dsh-agentapi.git#v0.1.0` |
 
-桌面版可在 **插件 → 添加插件** 中粘贴同一个 Git 地址，点击 **安装**。
-
-**从 Release 安装。** 登录 GitHub [下载 v0.1.0 安装包](https://github.com/Misaki030112/dsh-agentapi/releases/download/v0.1.0/dsh-agentapi-0.1.0.tgz)。桌面版在 **添加插件** 中填入下载文件的绝对路径。Web 版可使用以下命令。
-
-```sh
-npx -y @deepseek-ai/dsh plugin --profile web add "$HOME/Downloads/dsh-agentapi-0.1.0.tgz"
-```
-
-安装完成后重启 DSH。
+点击 **安装**，完成后重启 DSH。
 
 ## Quick Start
 
-### 1. 连接七牛 AgentAPI
+打开 **设置 → 云端智能体**，填入七牛 AgentAPI Key，点击 **保存并连接**。首次使用可保留默认的 **Native** 运行时，插件会在首次委派时准备 Agent 和云环境。已有 Agent 或云环境时，可在 **高级设置** 中选择。[获取 AgentAPI Key](https://portal.qiniu.com/agentapi/settings)
 
-打开 **设置 → 云端智能体**，填入 AgentAPI Key，点击 **保存并连接**。默认运行时为 **Native**，也可选择下图中的 **Claude Code**，或在高级设置中选用已有的 Agent 和云环境。[获取 API Key](https://portal.qiniu.com/agentapi/settings)
+![DSH 云端智能体设置中的账号连接、运行时、模型和高级设置](assets/connect.png)
 
-![在 DSH 设置中连接 AgentAPI，并选择云端运行时和模型](assets/connect.png)
+## 在 DSH 中使用 AgentAPI
 
-### 2. 委派一次订单月结
+### 主会话 · 委派与调度
 
-在主会话附上订单表和支付流水，输入 `/cloud` 交代核对规则和交付物。已经在前文约定的规则可以直接引用。
+在输入框键入 `/` 并选择 **云端智能体**，或直接用 `/cloud` 描述任务。DSH 主智能体会结合前文和你选中的附件组织委派，由 AgentAPI 创建独立的云端会话执行。任务完成后，结果回到主会话。
 
-> /cloud 核对十月订单与支付流水。按流水号去重，只计已入账的收款和退款。逐单比较应收与实收，列出差额和找不到订单的流水。交付对账明细、异常清单和月结合计，并校验明细与汇总是否一致。
+点击顶部的 **子智能体** 即可查看本次会话的成员。带云朵图标的条目运行在 AgentAPI 上。列表显示状态、Token 用量和耗时，点击条目即可进入对应会话。
 
-点击会话顶部的 **子智能体**。图中带云朵的「完成十月订单月结」是云端任务，「判断容差边界」是本地子智能体。
+![DSH 主会话中的委派入口，以及带云朵标识的子智能体列表](assets/delegate.png)
 
-![DSH 主会话分派十月订单月结，列表同时展示云端与本地子智能体](assets/delegate.png)
+### 云端子会话 · 执行与协作
 
-### 3. 查看交付物，继续追问
+这里展示主智能体交给云端的任务，以及云端智能体实时发出的消息、工具调用和执行结果。运行中可以直接中断，后续可在底部输入框补充要求，继续使用这个 AgentAPI 会话里的上下文和文件。
 
-打开「完成十月订单月结」。这次任务生成了 12 行订单明细（`detail.csv`）、含 8 笔订单差异和 1 笔孤立流水的异常清单（`exceptions.csv`），以及月结合计（`summary.json`）。
+![DSH 云端子会话中的任务说明、执行结果和消息输入框](assets/session.png)
 
-![云端子会话展示月结任务、逐行校验结果和生成的文件](assets/session.png)
-
-点击 **查看云端记录** 可下载文件。也可以在子会话继续问「如果允许一元以内的差额，哪些订单的判定会改变？」云端智能体会沿用本次对账的数据继续核算。
+需要取回文件时，点击 **查看云端记录**，即可在七牛 AgentAPI 控制台下载本次会话的交付物。

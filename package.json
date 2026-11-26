@@ -1,7 +1,7 @@
 {
   "name": "@xgrowthlab/dsh-agentapi",
   "version": "0.1.0",
-  "description": "Cloud Agent for DeepSeek Harness, powered by Qiniu AgentAPI.",
+  "description": "DSH × AgentAPI — 七牛 AgentAPI 的 DeepSeek Harness 桌面插件",
   "repository": { "type": "git", "url": "https://github.com/Misaki030112/dsh-agentapi.git" },
   "type": "module",
   "main": "./index.js",
