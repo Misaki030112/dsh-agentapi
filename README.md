@@ -2,18 +2,20 @@
 
 <p align="center"><strong>七牛 AgentAPI 的 DeepSeek Harness 桌面插件</strong></p>
 
-七牛 AgentAPI 为开发者提供智能体托管服务。你可以为智能体配置模型、工具和执行环境，由平台运行多步骤任务。通过这个插件，DSH 可以直接调用你在 AgentAPI 上配置的智能体，让它们作为云端子智能体参与当前项目。[了解七牛 AgentAPI](https://www.qiniu.com/products/agentapi)
+通过 DSH 在本地组织任务，让七牛 AgentAPI 托管的智能体在云端执行。你可以从 DSH 调用已有的 Agent 和云环境，也可以随时进入 Portal 查看同一次任务的完整记录。
+
+[了解七牛 AgentAPI](https://www.qiniu.com/products/agentapi) · [打开 AgentAPI Portal](https://portal.qiniu.com/agentapi)
+
+[![七牛 AgentAPI 产品介绍](assets/agentapi-product.jpg)](https://www.qiniu.com/products/agentapi)
 
 ## Install
 
-在 DeepSeek Harness 桌面版打开 **插件 → 添加插件**，任选一种安装来源。
+在 DeepSeek Harness 桌面版打开 **插件 → 添加插件**，选择以下任一来源，点击 **安装** 并重启 DSH。
 
 | 安装来源 | 在「添加插件」中填写 |
 | --- | --- |
-| Release 安装包 | 登录 GitHub [下载 v0.1.0 安装包](https://github.com/Misaki030112/dsh-agentapi/releases/download/v0.1.0/dsh-agentapi-0.1.0.tgz)，填入下载的 `.tgz` 文件的绝对路径 |
-| GitHub 仓库 | 已配置仓库 SSH 访问权限时，直接粘贴 `git+ssh://git@github.com/Misaki030112/dsh-agentapi.git#v0.1.0` |
-
-点击 **安装**，完成后重启 DSH。
+| Release 安装包 | 下载 `dsh-agentapi-0.1.0.tgz`，粘贴本地文件的绝对路径。[下载 v0.1.0](https://github.com/Misaki030112/dsh-agentapi/releases/download/v0.1.0/dsh-agentapi-0.1.0.tgz) |
+| GitHub | 粘贴 `git+ssh://git@github.com/Misaki030112/dsh-agentapi.git#v0.1.0`，使用已授权的 GitHub SSH 账号安装 |
 
 ## Quick Start
 
@@ -37,4 +39,10 @@
 
 ![DSH 云端子会话中的任务说明、执行结果和消息输入框](assets/session.png)
 
-需要取回文件时，点击 **查看云端记录**，即可在七牛 AgentAPI 控制台下载本次会话的交付物。
+### AgentAPI Portal · 查看云任务
+
+在云端子会话点击 **查看云端记录**，即可打开这项任务对应的 AgentAPI 会话。也可以登录 Portal，在左侧 **会话** 中找到从 DSH 发起的任务。[进入 AgentAPI Portal](https://portal.qiniu.com/agentapi)
+
+在 **对话** 中回看消息，切到 **轨迹** 可以沿时间线展开模型调用和工具执行详情。**原始事件（JSONL）** 保留逐条事件，生成的报告、表格与补丁可从 **文件** 下载。
+
+[![七牛 AgentAPI Portal 的会话轨迹，展示模型调用、工具执行与文件入口](assets/agentapi-portal.jpg)](https://portal.qiniu.com/agentapi)

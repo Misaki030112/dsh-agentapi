@@ -6,7 +6,7 @@
   "type": "module",
   "main": "./index.js",
   "exports": { ".": "./index.js", "./client": "./client.js", "./package.json": "./package.json" },
-  "files": ["index.js", "client.js", "lib", "cordis.patch.yml", "README.md", "assets/*.png"],
+  "files": ["index.js", "client.js", "lib", "cordis.patch.yml", "README.md", "assets/*.png", "assets/*.jpg"],
   "scripts": { "test": "node --test" },
   "engines": { "node": ">=22.19" },
   "dsh": {
