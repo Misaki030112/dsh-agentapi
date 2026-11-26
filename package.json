@@ -1,12 +1,12 @@
 {
   "name": "@xgrowthlab/dsh-agentapi",
   "version": "0.1.0",
-  "description": "在 DeepSeek Harness 中委派任务给七牛云端智能体，实时查看进展、续聊并下载产物。",
+  "description": "Cloud Agent for DeepSeek Harness, powered by Qiniu AgentAPI.",
   "repository": { "type": "git", "url": "https://github.com/Misaki030112/dsh-agentapi.git" },
   "type": "module",
   "main": "./index.js",
   "exports": { ".": "./index.js", "./client": "./client.js", "./package.json": "./package.json" },
-  "files": ["index.js", "client.js", "lib", "cordis.patch.yml", "README.md", "assets/readme"],
+  "files": ["index.js", "client.js", "lib", "cordis.patch.yml", "README.md", "assets/*.png"],
   "scripts": { "test": "node --test" },
   "engines": { "node": ">=22.19" },
   "dsh": {
