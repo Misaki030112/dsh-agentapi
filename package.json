@@ -1,12 +1,12 @@
 {
   "name": "@xgrowthlab/dsh-agentapi",
   "version": "0.1.0",
-  "description": "DSH × AgentAPI — 七牛 AgentAPI 的 DeepSeek Harness 桌面插件",
+  "description": "Qiniu AgentAPI integration for DeepSeek Harness.",
   "repository": { "type": "git", "url": "https://github.com/Misaki030112/dsh-agentapi.git" },
   "type": "module",
   "main": "./index.js",
   "exports": { ".": "./index.js", "./client": "./client.js", "./package.json": "./package.json" },
-  "files": ["index.js", "client.js", "lib", "cordis.patch.yml", "README.md", "assets/*.png", "assets/*.jpg"],
+  "files": ["index.js", "client.js", "lib", "cordis.patch.yml", "README.md", "README.zh.md", "assets/*.png", "assets/*.jpg"],
   "scripts": { "test": "node --test" },
   "engines": { "node": ">=22.19" },
   "dsh": {
